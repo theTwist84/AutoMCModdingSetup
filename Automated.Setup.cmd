@@ -37,13 +37,14 @@ IF NOT EXIST "%CD%\jdk" (
 )
 :UnpackJDK
 for /r %%x in (*.pack) do %CD%\jdk\bin\unpack200 -r "%%x" "%%~dx%%~px%%~nx.jar"
-SETX JAVA_HOME "%CD%\jdk"
-SETX PATH "%JAVA_HOME%\bin"
+SET JAVA_HOME=.\jdk
+
 :ForgeSetup
 IF EXIST "%CD%\forge-1.7.10-src" (
 	PUSHD %CD%\forge-1.7.10-src & GOTO setupWorkspace
 )
 :setupWorkspace
+SET JAVA_HOME=..\jdk
 IF NOT EXIST "%CD%\build" (
 	%CD%\gradlew setupDecompWorkspace & %CD%\gradlew setupDevWorkspace & %CD%\gradlew eclipse & POPD & %COMSPEC% /c %CD%\..\StartEclipse.vbs
 ) ELSE (
