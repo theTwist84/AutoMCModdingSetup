@@ -1,5 +1,5 @@
 @Echo Off
-SET forgeVer=10.13.0.1208
+SET forgeVer=10.13.1.1217
 :DLForge
 IF NOT EXIST "%CD%\forge-1.7.10-%forgeVer%-src.zip" (
 	wget -c --no-check-certificate --no-cookies "http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.7.10-%forgeVer%/forge-1.7.10-%forgeVer%-src.zip" -O forge-1.7.10-%forgeVer%-src.zip
